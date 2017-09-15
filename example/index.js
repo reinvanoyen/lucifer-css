@@ -28,4 +28,47 @@ class Sticky extends Lucifer {
 	}
 }
 
-new Sticky(document.getElementById('sticky'));
+class MouseFollow extends Lucifer {
+
+	constructor(el) {
+		super(el);
+		window.addEventListener('mousemove', e => {
+			this.mousePosX = e.pageX;
+			this.mousePosY = e.pageY;
+		});
+	}
+
+	getName() {
+		return 'mouse';
+	}
+
+	getDefaults() {
+		return {
+			'follow': false
+		};
+	}
+
+	render(el) {
+		if(this.follow) {
+			el.style.position = 'absolute';
+			el.style.top = this.mousePosY + 'px';
+			el.style.left = this.mousePosX + 'px';
+			return;
+		}
+
+		el.style.position = '';
+		el.style.top = '';
+		el.style.left = '';
+	}
+}
+
+let stickies = document.querySelectorAll('*');
+stickies.forEach(s => {
+	new Sticky(s);
+	new MouseFollow(s);
+});
+
+let test = document.querySelectorAll('.follow-mouse');
+test.forEach(s => {
+	new MouseFollow(s);
+});

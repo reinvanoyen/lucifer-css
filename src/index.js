@@ -13,7 +13,10 @@ class Lucifer {
     this.computed = null;
 
     this.types = {};
+    this.name = this.getName();
     this.defaults = this.getDefaults();
+    this.rawValues = {};
+
     this.processTypes();
 
     this.refresh();
@@ -34,18 +37,25 @@ class Lucifer {
   }
 
   getPropValue(prop) {
-    let val = this.computed.getPropertyValue('--' + this.getName() + '-' + prop);
+    let val = this.computed.getPropertyValue('--' + this.name + '-' + prop);
     if (val) {
+      if( val === this.rawValues[prop]) {
+        return this[prop];
+      }
       val = val.trim();
-      let type = this.types[prop];
-      if(type === 'number') {
-        return Number(val);
-      } else if( type === 'boolean' ) {
-        return ( val === 'true' );
-      } else if( type === 'string' ) {
-        return String(val);
+      switch (this.types[prop]) {
+        case 'number':
+          return Number(val);
+        case 'boolean':
+          return (val === 'true');
+        case 'string':
+          return val;
+        default:
+          return val;
       }
     }
+
+    this.rawValues[prop] = val;
     return this.getDefaults()[prop];
   }
 
@@ -54,6 +64,8 @@ class Lucifer {
     this.refresh();
     this.render(this.el);
   }
+
+  render() {}
 }
 
 export default Lucifer;
