@@ -1,0 +1,19 @@
+#sticky
+{
+	position: absolute;
+	top: 150px;
+	display: block;
+	width: 100px;
+	height: 100px;
+	--sticky-position: true;
+	--sticky-offset: 50;
+	background-color: blue;
+}
+
+@media screen and ( min-width: 2000px )
+{
+	#sticky
+	{
+		--sticky-offset: 10;
+	}
+}
