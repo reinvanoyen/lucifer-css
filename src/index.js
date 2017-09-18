@@ -42,21 +42,25 @@ class Lucifer {
       if( val === this.rawValues[prop]) {
         return this[prop];
       }
+      this.rawValues[prop] = val;
       val = val.trim();
+
       switch (this.types[prop]) {
         case 'number':
-          return Number(val);
+          val = Number(val);
+          break;
         case 'boolean':
-          return (val === 'true');
-        case 'string':
-          return val;
-        default:
-          return val;
+          val = (val === 'true');
+          break;
       }
+      this.onPropertyChange(prop, val);
+      return val;
     }
 
     this.rawValues[prop] = val;
-    return this.getDefaults()[prop];
+    val = this.defaults[prop];
+    this.onPropertyChange(prop, val);
+    return val;
   }
 
   start() {
@@ -66,6 +70,7 @@ class Lucifer {
   }
 
   render() {}
+  onPropertyChange(prop, val) {}
 }
 
 export default Lucifer;

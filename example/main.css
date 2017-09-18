@@ -1,102 +1,12 @@
 .sticky
 {
 	position: absolute;
+	top: 300px;
 	width: 100px;
 	height: 100px;
-	--sticky-position: true;
-}
-
-.follow-mouse
-{
-	width: 10px;
-	height: 10px;
-	background-color: red;
-	--mouse-follow: true;
-}
-
-.sticky01
-{
-	top: 10px;
-	left: 10px;
 	background-color: blue;
+	--sticky-enabled: true;
 	--sticky-offset: 150;
-}
-
-.sticky02
-{
-	top: 200px;
-	left: 500px;
-	background-color: green;
-}
-
-.sticky03
-{
-	top: 300px;
-	background-color: purple;
-}
-
-.sticky04
-{
-	top: 300px;
-	left: 300px;
-	background-color: blue;
-}
-
-.sticky05
-{
-	top: 200px;
-	left: 500px;
-	background-color: red;
-	--sticky-offset: 20;
-}
-
-.sticky06
-{
-	top: 800px;
-	left: 11px;
-	background-color: blue;
-	--sticky-offset: 60;
-}
-
-.sticky07
-{
-	top: 12px;
-	left: 600px;
-	background-color: blue;
-	--sticky-offset: 30;
-}
-
-.sticky08
-{
-	top: 456px;
-	left: 112px;
-	background-color: blue;
-}
-
-.sticky09
-{
-	top: 500px;
-	left: 425px;
-	background-color: blue;
-}
-
-.sticky10
-{
-	top: 400px;
-	left: 300px;
-	background-color: blue;
-}
-
-.sticky11
-{
-	top: 100px;
-	left: 500px;
-	background-color: blue;
-}
-
-.sticky12
-{
-	top: 20px;
-	left: 100px;
-	background-color: blue;
+	--drag-enabled: true;
+	--drag-enabled: true;
 }
