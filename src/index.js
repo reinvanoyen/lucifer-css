@@ -31,35 +31,49 @@ class Lucifer {
 
   refresh() {
     this.computed = getComputedStyle(this.el);
+
     for(let prop in this.defaults) {
       this[prop] = this.getPropValue(prop);
     }
   }
 
   getPropValue(prop) {
+
     let val = this.computed.getPropertyValue('--' + this.name + '-' + prop);
+
     if (val) {
+
       if( val === this.rawValues[prop]) {
         return this[prop];
       }
+
       this.rawValues[prop] = val;
       val = val.trim();
 
       switch (this.types[prop]) {
+
         case 'number':
           val = Number(val);
           break;
+
         case 'boolean':
           val = (val === 'true');
           break;
       }
+
       this.onPropertyChange(prop, val);
       return val;
     }
 
     this.rawValues[prop] = val;
+
     val = this.defaults[prop];
-    this.onPropertyChange(prop, val);
+
+    if (this[prop] && this[prop] !== val) {
+
+        this.onPropertyChange(prop, val);
+    }
+
     return val;
   }
 

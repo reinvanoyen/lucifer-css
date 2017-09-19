@@ -15,6 +15,10 @@ class Sticky extends Lucifer {
 		};
 	}
 
+	onPropertyChange(prop, val) {
+		console.log('change', prop, val);
+	}
+
 	getOffsetTop() {
 
 		let el = this.el;
@@ -166,8 +170,6 @@ class Drag extends Lucifer {
 }
 
 let els = document.querySelectorAll('.lucifer');
-els.forEach(el => {
-	//new MouseFollow(el);
-	new Drag(el);
-	new Sticky(el);
-});
+for( let i = 0; i < els.length; i++ ) {
+	new Sticky(els[i]);
+}

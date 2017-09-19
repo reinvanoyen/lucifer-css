@@ -6,7 +6,12 @@
 	height: 100px;
 	background-color: blue;
 	--sticky-enabled: true;
-	--sticky-offset: 150;
-	--drag-enabled: true;
-	--drag-enabled: true;
+}
+
+@media screen and (min-width: 1000px)
+{
+	.sticky
+	{
+		--sticky-offset: 150;
+	}
 }
