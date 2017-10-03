@@ -4,6 +4,11 @@ import Lucifer from '../src/index';
 
 class Sticky extends Lucifer {
 
+	constructor(el) {
+		super(el);
+		this.something = 'lol';
+	}
+
 	getName() {
 		return 'sticky';
 	}
@@ -34,6 +39,9 @@ class Sticky extends Lucifer {
 
 	render(el) {
 		if(this.enabled) {
+
+			console.log(this.something);
+
 			let scrollDistance = window.pageYOffset - ( this.getOffsetTop() - this.offset );
 			if(scrollDistance > 0) {
 				el.style.transform = 'translateY(' + scrollDistance + 'px)';

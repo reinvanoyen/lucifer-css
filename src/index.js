@@ -7,7 +7,7 @@
 
 class Lucifer {
 
-  constructor(el) {
+  constructor(el, autorender = true) {
 
     this.el = el;
     this.computed = null;
@@ -20,19 +20,21 @@ class Lucifer {
     this.processTypes();
 
     this.refresh();
-    this.start();
+    if (autorender) {
+      this.start();
+    }
   }
 
   processTypes() {
     for(let prop in this.defaults) {
-      this.types[ prop ] = typeof this.defaults[prop];
+      this.types[prop] = typeof this.defaults[prop];
     }
   }
 
   refresh() {
     this.computed = getComputedStyle(this.el);
 
-    for(let prop in this.defaults) {
+    for (let prop in this.defaults) {
       this[prop] = this.getPropValue(prop);
     }
   }
@@ -43,7 +45,7 @@ class Lucifer {
 
     if (val) {
 
-      if( val === this.rawValues[prop]) {
+      if (val === this.rawValues[prop]) {
         return this[prop];
       }
 
