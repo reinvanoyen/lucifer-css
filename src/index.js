@@ -19,8 +19,8 @@ class Lucifer {
 
     this.processTypes();
 
-    this.refresh();
     if (autorender) {
+      this.refresh();
       this.start();
     }
   }
