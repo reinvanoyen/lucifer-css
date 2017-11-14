@@ -177,7 +177,11 @@ class Drag extends Lucifer {
 	}
 }
 
-let els = document.querySelectorAll('.lucifer');
-for( let i = 0; i < els.length; i++ ) {
-	new Sticky(els[i]);
-}
+let el = document.querySelector('.lucifer');
+let sticky = new Sticky(el);
+
+let btn = document.querySelector('.stop-sticky');
+
+btn.addEventListener( 'click', e => {
+	sticky.stop();
+});

@@ -17,6 +17,8 @@ class Lucifer {
     this.defaults = this.getDefaults();
     this.rawValues = {};
 
+    this.animFrame = null;
+
     this.processTypes();
 
     if (autorender) {
@@ -80,9 +82,17 @@ class Lucifer {
   }
 
   start() {
-    requestAnimationFrame(() => this.start());
+
+    this.animFrame = requestAnimationFrame(() => {
+      this.start()
+    });
+
     this.refresh();
     this.render(this.el);
+  }
+
+  stop() {
+    cancelAnimationFrame(this.animFrame);
   }
 
   render() {}
